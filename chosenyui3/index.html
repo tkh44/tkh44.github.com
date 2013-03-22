@@ -1242,11 +1242,6 @@
     <div class="side-by-side clearfix">
       <ul>
         <li>
-          <h3>Plugging a node</h3>
-          <p><strong>Single Field: </strong><code>var node = Y.one("#form_field").plug(Y.Chosen);</code></p>
-          <p><strong>All select elements within a form: </strong><code>var node = Y.one("#form").plug(Y.Chosen);</code></p>
-        </li>
-        <li>
           <h3>Form Field Change</h3>
           <p>When working with form fields, you often want to perform some behavior after a value has been selected or deselected. Whenever a user selects a field in Chosen, it triggers a "change" event* on the original form field. That let's you do something like this:</p>
           <p><code>node.chosen.change( &hellip; );</code></p>
@@ -1261,12 +1256,15 @@
       </ul>
     </div>
 
-    <h2>Setup (for jQuery)</h2>
+    <h2>Setup (for YUI3)</h2>
     <p>Using Chosen is easy as can be.</p>
     <ol>
       <li>Download the plugin and copy the chosen files to your app.</li>
-      <li>Activate the plugin on the select boxes of your choice: <code>$(".chzn-select").chosen()</code></li>
-      <li><a href="http://youtu.be/pS-RsIzb78U?t=57s">Disco</a>.</li>
+      <li>
+        <h3>Plugging a single field or form</h3>
+        <p><strong>Single Field: </strong><code>var node = Y.one("#form_field").plug(Y.Chosen);</code></p>
+        <p><strong>All select elements within a form: </strong><code>var node = Y.one("#form").plug(Y.Chosen);</code></p>
+      </li>
     </ol>
     
   </div>
