@@ -1102,7 +1102,6 @@ Copyright (c) 2011 by Harvest
         if (ieUA === 6 || (ieUA === 7 && document.documentMode === 7)) {
           return this;
         }
-        console.log(this);
         attach_chosen_instance = function(node) {
           var chosen_instance;
 
@@ -1113,8 +1112,8 @@ Copyright (c) 2011 by Harvest
           }
         };
         if (this.get("host").test("form")) {
-          return this.all("select").each(function(input) {
-            return attach_chosen_instance(input);
+          return this.get("host").all("select").each(function(input) {
+            return input.plug(Y.Chosen);
           });
         } else {
           input = this.get("host");
