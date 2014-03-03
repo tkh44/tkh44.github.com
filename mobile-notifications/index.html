@@ -24,9 +24,10 @@
 
 		var buttons = document.querySelectorAll('button');
 
-		buttons.addEventListener('click', function() {
-			var type = this.dataset.type;
-			Notification('This is a ' + type + ' notification', {
+		Array.prototype.slice.call(buttons).every(function(b) {
+			b.addEventListener('click', function() {
+				var type = this.dataset.type;
+				Notification('This is a ' + type + ' notification', {
 				type: type
 			});
 		});
