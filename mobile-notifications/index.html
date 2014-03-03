@@ -15,11 +15,22 @@
 	</style>
 </head>
 <body>
-	<h1>Testing test test.</h1>
+	<h1>Default</h1>
+	<button data-type="default">Show default notification</button>
 
 	<script type="text/javascript" src="notification.js"></script>
 	<script>
-		notification = new Notification("You have successfully logged in.", {type: 'success', tapToClose: true});
+		notification = new Notification("You have successfully logged in.", {type: 'success', tapToClose: false});
+
+		var buttons = document.querySelectorAll('button');
+
+		buttons.addEventListener('click', function() {
+			var type = this.dataset.type;
+			Notification('This is a ' + type + ' notification', {
+				type: type
+			});
+		});
+
 	</script>
 </body>
 </html>
