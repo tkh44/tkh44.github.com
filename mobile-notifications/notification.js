@@ -50,6 +50,8 @@
     destroyAfter: 500
   };
 
+  notificationQueue = [];
+
   /**
    * Simple notification alert meant to be used with PhoneGap apps
    * @param text Text content of the notification
@@ -86,8 +88,12 @@
      */
     init: function () {
       this._setupEvents();
+      
+      //Set up a simple queue to keep notifications from covering one another
+      notificationQueue.push(this);
+      this.queuePosition = notificationQueue.length - 1;
 
-      if (this.options.show) {
+      if (this.options.show && notificationQueue.length === 1) {
         // For iOS we need to wait for the current stack to clear
         // or the initial animation will not run
         setTimeout(this.show.bind(this), 1);
@@ -125,6 +131,11 @@
       this._destroyEvents();
 
       this.parent.removeChild(this.el);
+
+      notificationQueue.splice(this.queuePosition, 1);
+      if (notificationQueue.length) {
+        notificationQueue[0].show();
+      }
     },
 
     /**

@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Test</title>
-	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="notification.css">
-	<style type="text/css">
-		body {
-			font-family: Helvetica, sans-serif;
-		}
-		h1 {
-			padding: 100px 0 25px;
-			text-align: center;
-		}
-	</style>
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="notification.css">
+    <style type="text/css">
+        body {
+            font-family: Helvetica, sans-serif;
+        }
+        h1 {
+            padding: 100px 0 25px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-	<h1>Default</h1>
-	<button data-type="default">Show default notification</button>
+    <h1>Default</h1>
+    <button data-type="success">Show default notification</button>
 
-	<script type="text/javascript" src="notification.js"></script>
-	<script>
-		notification = new Notification("You have successfully logged in.", {type: 'success', tapToClose: false});
+    <script type="text/javascript" src="notification.js"></script>
+    <script>
+        notification = new Notification("You have successfully logged in.", {type: 'success', tapToClose: false});
 
-		var buttons = document.querySelectorAll('button');
+        var buttons = document.querySelectorAll('button');
 
-		Array.prototype.slice.call(buttons).every(function(b) {
-			b.addEventListener('click', function() {
-				var type = this.dataset.type;
-				Notification('This is a ' + type + ' notification', {
-				type: type
-			});
-		});
+        Array.prototype.slice.call(buttons).every(function(button) {
+            button.addEventListener('click', function() {
+                var type = this.dataset.type;
+                Notification('This is a ' + type + ' notification', {
+                    type: type,
+                    tapToClose: true
+                });
+            });
+        });
 
-	</script>
+    </script>
 </body>
 </html>
